@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Study Vault</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .auth-box {
+      width: 380px;
+      background: rgba(16, 24, 75, 0.92);
+      padding: 28px;
+      border-radius: 18px;
+      border: 1px solid rgba(165, 180, 252, 0.55);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.7);
+    }
+
+    .auth-title {
+      color: #e5e7ff;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(165,180,252,0.7);
+      background: rgba(30,41,59,0.7);
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .auth-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      color: #fff;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .auth-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .toggle-link {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 14px;
+      color: #c7d2fe;
+      cursor: pointer;
+    }
+
+    .toggle-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="auth-box">
+
+    <div id="form-title" class="auth-title">Study Vault Login</div>
+
+    <input id="email" type="email" placeholder="Email" class="auth-input">
+    <input id="password" type="password" placeholder="Password" class="auth-input">
+
+    <button id="action-btn" class="auth-btn" onclick="login()">Login</button>
+
+    <div id="toggle-text" class="toggle-link" onclick="toggleForm()">
+      Don't have an account? Signup
+    </div>
+
+  </div>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.js"></script>
+
+  <script>
+    const supabaseClient = supabase.createClient(
+      "https://fbhpobafnvmbkoslehdg.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZiaHBvYmFmbnZtYmtvc2xlaGRnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ4NzMyODYsImV4cCI6MjA4MDQ0OTI4Nn0.XLBg_XUHNW3z4EZ-TVK1c8PP31-0lnD0M9TS21wIcHU"
+    );
+
+    let isLogin = true;
+
+    function toggleForm() {
+      isLogin = !isLogin;
+
+      document.getElementById("form-title").innerText =
+        isLogin ? "Study Vault Login" : "Create Account";
+
+      document.getElementById("action-btn").innerText =
+        isLogin ? "Login" : "Signup";
+
+      document.getElementById("toggle-text").innerText =
+        isLogin ? "Don't have an account? Signup"
+                : "Already have an account? Login";
+
+      document.getElementById("action-btn").setAttribute(
+        "onclick",
+        isLogin ? "login()" : "signup()"
+      );
+    }
+
+    async function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) {
+        alert("Login failed: " + error.message);
+      } else {
+        localStorage.setItem("sb-token", data.session.access_token);
+        window.location.href = "index.html"; 
+      }
+    }
+
+    async function signup() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const { data, error } = await supabaseClient.auth.signUp({
+        email,
+        password
+      });
+
+      if (error) {
+        alert("Signup failed: " + error.message);
+      } else {
+        alert("Account created! Please login.");
+        toggleForm();
+      }
+    }
+  </script>
+
+</body>
+</html>

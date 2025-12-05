@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Forgot Password</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body { display:flex; justify-content:center; align-items:center; height:100vh; margin:0; }
+    .box {
+      width:380px; background:rgba(16,24,75,0.92);
+      padding:28px; border-radius:18px;
+      border:1px solid rgba(165,180,252,0.55);
+      box-shadow:0 20px 45px rgba(0,0,0,0.7);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h2 style="text-align:center;color:#fff;">Reset Password</h2>
+    <input id="email" type="email" placeholder="Enter your email" class="auth-input">
+
+    <button class="auth-btn" onclick="sendReset()">Send Reset Link</button>
+
+    <div class="link" onclick="window.location.href='login.html'">
+      Back to Login
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.js"></script>
+
+  <script>
+    const supabaseClient = supabase.createClient(
+      "https://fbhpobafnvmbkoslehdg.supabase.co",
+      "YOUR_ANON_KEY"
+    );
+
+    async function sendReset() {
+      const email = document.getElementById("email").value;
+
+      const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+        redirectTo: "http://127.0.0.1:5500/reset.html"
+      });
+
+      if (error) return alert("Error: " + error.message);
+
+      alert("Password reset link sent to your email!");
+    }
+  </script>
+
+</body>
+</html>
