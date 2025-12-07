@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reset Password</title>
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #3d5dff, #050816);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      margin: 0;
+      font-family: Arial;
+    }
+
+    .box {
+      width: 380px;
+      padding: 30px;
+      background: rgba(16,24,75,0.92);
+      border-radius: 18px;
+      border: 1px solid rgba(165,180,252,0.55);
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      background: rgba(30,41,59,0.8);
+      border-radius: 12px;
+      border: 1px solid rgba(165,180,252,0.7);
+      color: white;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 14px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Reset Password</h2>
+  <input id="email" type="email" placeholder="Enter your email">
+  <button onclick="sendReset()">Send Reset Link</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+const supabaseClient = supabase.createClient(
+  "https://fbhpobafnvmbkoslehdg.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZiaHBvYmFmbnZtYmtvc2xlaGRnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ4NzMyODYsImV4cCI6MjA4MDQ0OTI4Nn0.XLBg_XUHNW3z4EZ-TVK1c8PP31-0lnD0M9TS21wIcHU"
+);
+
+async function sendReset() {
+  const { error } = await supabaseClient.auth.resetPasswordForEmail(email.value, {
+    
+    // ⭐⭐ IMPORTANT FINAL FIX ⭐⭐
+    // Reset link will now open your NEW password page
+    redirectTo: "https://studyvaultt.netlify.app/update-password.html"
+
+  });
+
+  if (error) alert(error.message);
+  else alert("Reset link sent!");
+}
+</script>
+
+</body>
+</html>

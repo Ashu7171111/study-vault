@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Vault</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    // Redirect password recovery links
+    if (location.hash.includes("type=recovery")) {
+      window.location.href = "update-password.html" + location.hash;
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- ⭐ NAVBAR (FINAL MERGED) -->
+  <div class="navbar">
+    <div class="nav-content">
+
+      <!-- LEFT SIDE -->
+      <div class="nav-left">
+        <span class="material-icons nav-logo">menu_book</span>
+        <h1 class="nav-title">Study Vault</h1>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="nav-right">
+
+        <!-- GitHub Button -->
+        <a 
+          href="https://github.com/Ashu7171111" 
+          target="_blank" 
+          class="btn btn-glass"
+        >
+          <span class="material-icons">code</span>
+          GitHub
+        </a>
+
+        <!-- Logout Button -->
+        <button id="logoutBtn" class="btn btn-glass">
+          Logout
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ⭐ MAIN APP LAYOUT -->
+  <div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <h3 class="sidebar-title">
+        <span class="material-icons sidebar-icon">auto_stories</span>
+        Subjects
+      </h3>
+
+      <button id="addSubjectBtn" class="sidebar-add-btn">
+        <span class="material-icons" style="font-size:18px;">add_circle</span>
+        Add Subject
+      </button>
+
+      <ul id="subjectList" class="subject-ul"></ul>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main"></div>
+
+  </div>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.js"></script>
+
+  <script>
+    // Initialize Supabase
+    window.supabase = supabase.createClient(
+      "https://fbhpobafnvmbkoslehdg.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZiaHBvYmFmbnZtYmtvc2xlaGRnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ4NzMyODYsImV4cCI6MjA4MDQ0OTI4Nn0.XLBg_XUHNW3z4EZ-TVK1c8PP31-0lnD0M9TS21wIcHU"
+    );
+
+    console.log("Supabase initialized");
+
+    // Check Login Session
+    supabase.auth.getSession().then(({ data }) => {
+      if (!data.session) {
+        window.location.href = "login.html";
+      }
+    });
+  </script>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

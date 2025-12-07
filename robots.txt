@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rad-naiad-5128bf.netlify.app/sitemap.xml

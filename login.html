@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Study Vault - Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #3d5dff, #050816);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .box {
+      width: 380px;
+      padding: 30px;
+      background: rgba(16,24,75,0.92);
+      border-radius: 18px;
+      border: 1px solid rgba(165,180,252,0.55);
+      color: white;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 12px;
+      border: 1px solid rgba(165,180,252,0.6);
+      background: rgba(30,41,59,0.8);
+      color: white;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      font-weight: bold;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .toggle {
+      margin-top: 10px;
+      color: #c7d2fe;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    #resetSection { display:none; }
+    #signupSection { display:none; }
+
+    /* 🔵 Loader Spinner */
+    #loaderOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    #loaderOverlay div {
+      border: 4px solid #ffffff44;
+      border-top: 4px solid #7d5bff;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Loader Overlay -->
+<div id="loaderOverlay"><div></div></div>
+
+<div class="box">
+
+  <h2 id="title">Login</h2>
+
+  <!-- LOGIN SECTION -->
+  <div id="loginSection">
+    <input id="email" type="email" placeholder="Email" autocomplete="username">
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+    <button id="loginBtn">Login</button>
+
+    <div class="toggle" id="showSignupBtn">Don't have an account? Signup</div>
+    <div class="toggle" id="gotoResetBtn">Forgot Password?</div>
+  </div>
+
+  <!-- SIGNUP SECTION -->
+  <div id="signupSection">
+    <input id="sEmail" type="email" placeholder="Email" autocomplete="username">
+    <input id="sPass" type="password" placeholder="Password" autocomplete="new-password">
+    <input id="sConfirm" type="password" placeholder="Confirm Password" autocomplete="new-password">
+
+    <button id="signupBtn">Signup</button>
+    <div class="toggle" id="showLoginBtn">Already have an account? Login</div>
+  </div>
+
+  <!-- RESET AFTER AUTO LOGIN -->
+  <div id="resetSection">
+    <h3>Set New Password</h3>
+
+    <input id="newPass" type="password" placeholder="New Password" autocomplete="new-password">
+    <input id="newConfirm" type="password" placeholder="Confirm Password" autocomplete="new-password">
+
+    <button id="updatePassBtn">Update Password</button>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+
+/* ---------- CONFIG ---------- */
+const SUPABASE_URL = "https://fbhpobafnvmbkoslehdg.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZiaHBvYmFmbnZtYmtvc2xlaGRnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ4NzMyODYsImV4cCI6MjA4MDQ0OTI4Nn0.XLBg_XUHNW3z4EZ-TVK1c8PP31-0lnD0M9TS21wIcHU";
+
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+/* Small DOM helper */
+const $ = id => document.getElementById(id);
+
+/* MODE UI helpers */
+function showLogin() {
+  $('title').innerText = "Login";
+  $('loginSection').style.display = 'block';
+  $('signupSection').style.display = 'none';
+  $('resetSection').style.display = 'none';
+}
+function showSignup() {
+  $('title').innerText = "Signup";
+  $('loginSection').style.display = 'none';
+  $('signupSection').style.display = 'block';
+  $('resetSection').style.display = 'none';
+}
+function showResetSection() {
+  $('title').innerText = "Reset Password";
+  $('loginSection').style.display = 'none';
+  $('signupSection').style.display = 'none';
+  $('resetSection').style.display = 'block';
+}
+
+/* Loader Controls */
+function showLoader() {
+  $('loaderOverlay').style.display = "flex";
+}
+function hideLoader() {
+  $('loaderOverlay').style.display = "none";
+}
+
+/* Attach UI Listeners */
+$('showSignupBtn').onclick = showSignup;
+$('showLoginBtn').onclick = showLogin;
+$('gotoResetBtn').onclick = () => location.href = 'reset.html';
+$('loginBtn').onclick = login;
+$('signupBtn').onclick = signup;
+$('updatePassBtn').onclick = updateNewPassword;
+
+/* AUTO RECOVERY SESSION */
+async function applyRecoverySession() {
+  try {
+    const hash = window.location.hash.substring(1);
+    if (!hash) return false;
+
+    const params = new URLSearchParams(hash);
+    if (params.get('type') !== 'recovery') return false;
+
+    const access_token = params.get('access_token');
+    const refresh_token = params.get('refresh_token') || '';
+
+    await supabaseClient.auth.setSession({ access_token, refresh_token });
+
+    let attempts = 0;
+    while (attempts < 10) {
+      const { data: sessionData } = await supabaseClient.auth.getSession();
+      if (sessionData?.session) {
+        showResetSection();
+        return true;
+      }
+      attempts++;
+      await new Promise(r => setTimeout(r, 250));
+    }
+
+    showResetSection();
+    return true;
+
+  } catch {
+    return false;
+  }
+}
+
+(async () => {
+  const applied = await applyRecoverySession();
+  if (!applied) showLogin();
+})();
+
+/* ----------- AUTH FUNCTIONS WITH LOADER ----------- */
+
+async function login() {
+  showLoader();
+  try {
+    const email = $('email').value.trim();
+    const password = $('password').value;
+    if (!email || !password) { hideLoader(); return alert("Enter email and password"); }
+
+    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+    if (error) throw error;
+
+    location.href = "index.html";
+
+  } catch (err) {
+    alert(err.message);
+  } finally {
+    hideLoader();
+  }
+}
+
+async function signup() {
+  showLoader();
+  try {
+    const email = $('sEmail').value.trim();
+    const pass = $('sPass').value;
+    const cpass = $('sConfirm').value;
+
+    if (!email || !pass) { hideLoader(); return alert("Enter email & password"); }
+    if (pass !== cpass) { hideLoader(); return alert("Passwords don't match"); }
+
+    const { error } = await supabaseClient.auth.signUp({ email, password: pass });
+    if (error) throw error;
+
+    alert("Signup successful! Please login.");
+    showLogin();
+
+  } catch (err) {
+    alert(err.message);
+  } finally {
+    hideLoader();
+  }
+}
+
+async function updateNewPassword() {
+  showLoader();
+  try {
+    const pass = $('newPass').value;
+    const cpass = $('newConfirm').value;
+
+    if (pass !== cpass) { hideLoader(); return alert("Passwords don't match"); }
+
+    const { error } = await supabaseClient.auth.updateUser({ password: pass });
+    if (error) throw error;
+
+    alert("Password updated!");
+    location.href = "index.html";
+
+  } catch (err) {
+    alert(err.message);
+  } finally {
+    hideLoader();
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,1408 @@
+/* ============ GLOBAL ============ */
+
+* {
+  box-sizing: border-box;
+  transition: 0.25s ease;
+}
+/* ============================================================= */
+/* ⭐ macOS Black + Bluish Premium Theme — FINAL COMPLETE CSS     */
+/* ============================================================= */
+
+/* GLOBAL */
+* {
+  box-sizing: border-box;
+  transition: 0.25s ease;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(circle at top, #0b0f1a 0%, #06070d 60%, #000000 100%);
+  color: #e8ecff;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: #3b57ff; border-radius: 4px; }
+
+/* ============================================================= */
+/* ⭐ NAVBAR — Perfect Center + macOS Glass Finish               */
+/* ============================================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(10, 12, 20, 0.85);
+  backdrop-filter: blur(26px) brightness(1.1);
+  -webkit-backdrop-filter: blur(26px) brightness(1.1);
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(110, 135, 255, 0.18);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.55);
+}
+
+/* ⭐ Flex layout: center title perfectly */
+.nav-content {
+  max-width: 1280px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* This centers the title */
+  position: relative;        /* For right buttons */
+}
+
+/* ⭐ Right side buttons always on the right */
+.nav-right {
+  position: absolute;
+  right: 0;
+  display: flex;
+  gap: 10px;
+}
+
+/* Title */
+.nav-title {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #a8c7ff;
+  text-shadow: 0 0 10px rgba(120,140,255,0.6);
+}
+
+/* ============================================================= */
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  padding: 18px;
+  background: rgba(12, 16, 32, 0.9);
+  border-radius: 18px;
+  border: 1px solid rgba(120,150,255,0.25);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+}
+
+/* SUBJECT CARDS */
+.subject-item {
+  padding: 10px 14px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  background: rgba(220,230,255,0.08);
+  border-left: 4px solid #4e7bff;
+  color: #dce3ff;
+  box-shadow: 0 0 8px rgba(80,120,255,0.25);
+}
+
+.subject-item:hover {
+  transform: translateX(8px) scale(1.02);
+  background: rgba(220,230,255,0.12);
+  box-shadow: 0 0 20px rgba(110,160,255,0.55);
+}
+
+/* Add Subject */
+.sidebar-add-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #3b4bff, #6a2bff);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 14px 28px rgba(40,60,255,0.45);
+}
+.sidebar-add-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ============================================================= */
+/* MAIN DASHBOARD PANEL — macOS Gloss + Neon Edge                */
+/* ============================================================= */
+
+.main {
+  flex: 1;
+  padding: 26px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(14,16,30,0.9), rgba(28,32,60,0.92));
+  border: 1px solid rgba(130,150,255,0.25);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.85),
+              inset 0 0 25px rgba(255,255,255,0.05);
+}
+
+.main:hover {
+  box-shadow: 0 0 40px rgba(110,150,255,0.35);
+}
+
+/* ============================================================= */
+/* TOPIC CARDS */
+.topic-card {
+  background: rgba(35,45,85,0.45);
+  border-radius: 16px;
+  border: 1px solid rgba(120,140,255,0.4);
+  margin-bottom: 12px;
+  box-shadow: 0 0 14px rgba(110,150,255,0.25);
+}
+
+.topic-card:hover {
+  transform: scale(1.015);
+  box-shadow: 0 0 26px rgba(110,150,255,0.55);
+}
+
+/* Header */
+.topic-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(120,140,255,0.18);
+}
+
+/* Remove white box from toggle */
+.topic-toggle-btn {
+  background: none !important;
+  border: none !important;
+}
+
+/* ============================================================= */
+/* SUBTOPICS */
+.subtopic-item {
+  background: rgba(55,70,120,0.45);
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(140,160,255,0.35);
+}
+.subtopic-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 18px rgba(120,150,255,0.65);
+}
+
+/* NOTES */
+.notes-area {
+  width: 100%;
+  min-height: 130px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(25,30,50,0.7);
+  border: 1px solid rgba(120,140,255,0.4);
+  color: #dce3ff;
+}
+
+/* BUTTONS */
+.btn-primary {
+  background: linear-gradient(135deg, #3a4aff, #6a2bff);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(120,140,255,0.5);
+}
+
+/* ============================================================= */
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .container { flex-direction: column; }
+  .sidebar { width: 100%; overflow-x: auto; }
+  .subject-item { min-width: 150px; }
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  /* Ensure full viewport width coverage */
+  width: 100vw; 
+  background: radial-gradient(circle at top, #3d5dff 0%, #1d0c3f 35%, #050816 100%);
+  color: #f5f7ff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #4b5dff;
+  border-radius: 4px;
+}
+
+/* ============ NAVBAR (Updated for Centering and Top-Right Logout) ============ */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(7, 12, 34, 0.9);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 14px 28px;
+}
+
+.nav-content {
+  /* Increased max-width for better screen fill */
+  max-width: 1280px; 
+  margin: 0 auto; /* Ensures the navbar content is centered */
+  display: flex;
+  align-items: center;
+  /* KEY CHANGE: Pushes the logo/title group and the logout button to opposite ends */
+  justify-content: space-between; 
+  /* gap: 10px; is managed by the inner div now */
+}
+
+/* We don't need to change .nav-logo or .nav-title as they are now grouped correctly in HTML */
+
+.nav-logo {
+  font-size: 26px;
+  color: #7bdcff;
+}
+
+.nav-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+/* ============ LAYOUT (Updated for better screen fill) ============ */
+
+.container {
+  /* Increased max-width to match the nav-content and better fill wide screens */
+  max-width: 1280px; 
+  margin: 18px auto 40px;
+  display: flex;
+  gap: 18px;
+}
+
+/* ============ SIDEBAR ============ */
+
+.sidebar {
+  width: 260px;
+  padding: 18px 18px 20px;
+  background: rgba(9, 16, 51, 0.92);
+  border-radius: 18px;
+  border: 1px solid rgba(124, 160, 255, 0.4);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-title {
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #e2e7ff;
+}
+
+.sidebar-icon {
+  font-size: 20px;
+  color: #7bdcff;
+}
+
+.subject-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* SUBJECT ITEMS (Consolidated) */
+
+.subject-item {
+  display: flex; /* Added for edit/delete buttons */
+  justify-content: space-between; /* Added for edit/delete buttons */
+  align-items: center;
+  padding: 10px 15px; /* Unified padding */
+  margin-bottom: 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  border-left: 4px solid var(--subject-accent);
+  background: var(--subject-bg);
+  color: #101624;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease; /* Ensure transition is smooth */
+}
+
+.subject-item:hover {
+  transform: translateX(6px) translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+  background: var(--subject-bg-hover);
+}
+
+.subject-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.subject-name-text {
+    font-weight: 600;
+}
+
+.subject-date-text {
+    font-size: 11px;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+.subject-actions {
+    display: flex;
+    gap: 5px;
+    margin-left: 10px;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s, opacity 0.2s;
+    opacity: 0.7;
+}
+
+.btn-icon:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+
+
+/* Pastel themes */
+
+.pastel-1 {
+  --subject-bg: rgba(255, 231, 240, 0.95);
+  --subject-bg-hover: rgba(255, 219, 236, 1);
+  --subject-accent: #ff8cbc;
+}
+.pastel-2 {
+  --subject-bg: rgba(231, 244, 255, 0.95);
+  --subject-bg-hover: rgba(212, 235, 255, 1);
+  --subject-accent: #6bbaff;
+}
+.pastel-3 {
+  --subject-bg: rgba(232, 255, 241, 0.95);
+  --subject-bg-hover: rgba(211, 255, 231, 1);
+  --subject-accent: #5edca5;
+}
+.pastel-4 {
+  --subject-bg: rgba(255, 245, 228, 0.95);
+  --subject-bg-hover: rgba(255, 236, 212, 1);
+  --subject-accent: #ffba63;
+}
+.pastel-5 {
+  --subject-bg: rgba(255, 251, 225, 0.95);
+  --subject-bg-hover: rgba(255, 246, 199, 1);
+  --subject-accent: #ffe066;
+}
+.pastel-6 {
+  --subject-bg: rgba(243, 237, 255, 0.95);
+  --subject-bg-hover: rgba(232, 223, 255, 1);
+  --subject-accent: #b28cff;
+}
+
+/* Add subject button */
+
+.sidebar-add-btn {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: linear-gradient(135deg, #6c63ff, #ff6584);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+}
+
+.sidebar-add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
+}
+
+/* ============ MAIN CONTENT ============ */
+
+.main {
+  flex: 1;
+  min-height: 520px;
+  padding: 22px 24px 26px;
+  border-radius: 20px;
+  background: radial-gradient(circle at top left, rgba(111, 66, 193, 0.35), rgba(14, 19, 61, 0.96));
+  border: 1px solid rgba(129, 140, 248, 0.5);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.8);
+  overflow-y: auto;
+}
+
+.main-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.main-title .material-icons {
+  font-size: 24px;
+  color: #7bdcff;
+}
+
+.section-heading {
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e5e7ff;
+}
+
+/* ============ GLASS CARDS (common) ============ */
+
+.section-card,
+.glass-card,
+.dash-card {
+  background: linear-gradient(135deg, rgba(16, 24, 75, 0.96), rgba(36, 17, 81, 0.96));
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+  border: 1px solid rgba(165, 180, 252, 0.55);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(15, 23, 42, 0.9);
+  margin-bottom: 18px;
+}
+
+.section-card {
+  margin-bottom: 20px;
+}
+
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #eef2ff;
+}
+
+.section-title .material-icons {
+  font-size: 20px;
+  color: #7bdcff;
+}
+
+/* ============ TOP ROW (Back + Subject) ============ */
+
+.top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.subject-header {
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subject-header span {
+  font-size: 22px;
+  color: #7bdcff;
+}
+
+/* Back button */
+
+.back-btn {
+  padding: 8px 14px;
+}
+
+/* ============ TOPICS + SUBTOPICS ============ */
+
+.topic-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+/* Topic card (Unified Styling) */
+
+.topic-card {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(15, 23, 42, 0.95)); 
+  border-radius: 16px;
+  margin-bottom: 10px;
+  padding: 0; /* Remove initial padding */
+  border: 1px solid rgba(129, 140, 248, 0.8);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+
+/* Topic header row (Consolidated) */
+
+.topic-header {
+  padding: 10px 15px; /* Added 15px side padding */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.topic-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topic-bullet {
+  font-size: 18px;
+  color: #7bdcff;
+}
+
+.topic-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.topic-date {
+  font-size: 12px;
+  color: #cbd5ff;
+}
+
+/* Topic Action buttons (Consolidated) */
+.topic-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.topic-toggle-btn {
+    opacity: 0.9;
+    color: #e5e7ff;
+    margin-left: 5px;
+}
+
+.topic-toggle-btn .material-icons {
+  font-size: 20px;
+  transform: rotate(0deg);
+  transition: transform 0.25s ease;
+  color: inherit;
+}
+
+.topic-card.open .topic-toggle-btn .material-icons {
+  transform: rotate(180deg);
+}
+
+/* Topic Details Content */
+.topic-details-content {
+    padding: 15px 15px 20px 15px; /* Unified padding */
+    border-top: 1px solid #454950;
+    max-height: 0; 
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    background: radial-gradient(circle at top, rgba(15, 23, 42, 0.98), rgba(17, 24, 39, 0.98));
+}
+
+.topic-card.open .topic-details-content {
+    max-height: 800px; /* Large enough value for accordion */
+    opacity: 1;
+}
+
+/* Subtopic wrapper */
+.subtopic-wrapper {
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+/* Subtopic list + item */
+
+.subtopic-list {
+  list-style: none;
+  margin: 0 0 6px;
+  padding: 0;
+}
+
+.subtopic-item {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(8, 47, 73, 0.95));
+  border-radius: 10px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  border: 1px solid rgba(129, 140, 248, 0.8);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subtopic-name {
+  font-weight: 500;
+}
+
+.subtopic-date {
+  font-size: 11px;
+  color: #cbd5ff;
+}
+
+/* Add subtopic button */
+
+.add-subtopic-btn {
+  margin-top: 2px;
+}
+
+/* Topic-Specific Notes/PDF Sections */
+.topic-notes-section, .topic-pdf-section {
+    margin-top: 15px;
+}
+.topic-notes-section h5, .topic-pdf-section h5 {
+    margin: 5px 0;
+}
+
+/* ============ NOTES ============ */
+
+.notes-area {
+  width: 100%;
+  min-height: 130px;
+  margin-top: 4px;
+  font-size: 14px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(165, 180, 252, 0.75);
+  background: radial-gradient(circle at top, rgba(30, 64, 175, 0.3), rgba(15, 23, 42, 0.9));
+  color: #e5e7ff;
+  outline: none;
+  resize: vertical;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.9);
+}
+
+.notes-area::placeholder {
+  color: rgba(191, 219, 254, 0.7);
+}
+
+/* ============ BUTTONS ============ */
+
+.btn {
+  border-radius: 12px;
+  border: none;
+  font-size: 13px;
+  padding: 9px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(88, 28, 135, 0.7);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(88, 28, 135, 0.9);
+}
+
+.btn-glass {
+  background: rgba(129, 140, 248, 0.12);
+  border: 1px solid rgba(129, 140, 248, 0.7);
+  color: #e5e7ff;
+}
+
+.btn-glass:hover {
+  background: rgba(129, 140, 248, 0.28);
+}
+
+.btn-green {
+  background: linear-gradient(135deg, #22c55e, #14b8a6);
+  color: #eaffff;
+  box-shadow: 0 12px 28px rgba(4, 120, 87, 0.7);
+}
+
+.btn-green:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 34px rgba(4, 120, 87, 0.9);
+}
+
+/* Small button (for topic notes/pdfs) */
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+/* ============ PDF UPLOAD (GENERAL) ============ */
+
+.upload-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: stretch;
+  margin-bottom: 14px;
+}
+
+.upload-drop {
+  flex: 1;
+  min-width: 220px;
+  border-radius: 14px;
+  border: 1px dashed rgba(148, 163, 253, 0.9);
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.96));
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  color: #c7d2fe;
+}
+
+.upload-drop:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 12px 26px rgba(8, 47, 73, 0.8);
+}
+
+.upload-drop input[type="file"] {
+  display: none;
+}
+
+.upload-drop span:first-child {
+  font-size: 22px;
+  color: #7bdcff;
+}
+
+/* ============ PDF UPLOAD (TOPIC) ============ */
+
+.upload-row-topic {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.upload-drop-topic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px dashed #666;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px;
+    width: 150px; /* Smaller width for topic level */
+    min-height: 50px;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+.upload-drop-topic input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.upload-drop-topic:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.pdf-list-title {
+  margin: 4px 0 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9ca3ff;
+}
+
+/* ============ PDF CARDS ============ */
+
+.recent-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+.pdf-card,
+.recent-list li {
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.35), rgba(15, 23, 42, 0.95));
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(129, 140, 248, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+}
+
+.pdf-card:hover,
+.recent-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.95);
+}
+
+.pdf-icon {
+  font-size: 24px;
+}
+
+.pdf-file-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.pdf-file-name a {
+  color: #bfdbfe;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.pdf-file-name a:hover {
+  color: #e5e7ff;
+  text-decoration: underline;
+}
+
+.pdf-date {
+  margin-left: auto;
+  font-size: 12px;
+  color: #c4d0ff;
+}
+
+/* ============ DASHBOARD GRID ============ */
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.dash-card {
+  position: relative;
+}
+
+.dash-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #e5e7ff;
+}
+
+.dash-card-header .material-icons {
+  font-size: 20px;
+  color: #7bdcff;
+}
+
+.dash-number {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 2px 0 0;
+}
+
+/* ============ RESPONSIVE ============ */
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    padding: 0 18px; 
+    width: auto; 
+  }
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 14px;
+    overflow-x: auto; 
+  }
+  .subject-ul {
+    max-height: 180px;
+    display: flex; 
+    gap: 10px;
+    padding-right: 18px;
+  }
+  .subject-item {
+      flex-shrink: 0; 
+      min-width: 150px;
+  }
+}/* ============ NAVBAR (Updated for True Centering using Grid) ============ */
+
+.nav-content {
+  max-width: 1280px; 
+  margin: 0 auto; /* Keeps the content area centered */
+  display: grid; /* CHANGE 1: Use CSS Grid */
+  /* CHANGE 2: Define 3 columns: Left Spacer, Center Content, Right Logout */
+  grid-template-columns: 1fr auto 1fr; 
+  align-items: center;
+  padding: 0 10px; /* Optional internal padding */
+}
+
+/* 1. Logo/Title Group: Place this in the 2nd (Center) column */
+.nav-content > div:first-child {
+    /* To push the title group to the center */
+    grid-column: 2; 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Ensure the title itself is centered within the 2nd column */
+    justify-content: center; 
+}
+
+/* 2. Logout Button: Place this in the 3rd (Right) column */
+#logoutBtn {
+    grid-column: 3; 
+    /* Push the button to the far right edge of the 3rd column */
+    justify-self: end; 
+}
+/* FIX: Remove white box around topic toggle button */
+.topic-toggle-btn {
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topic-toggle-btn .material-icons {
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+/* ============================================================= */
+/* 🚀 NEON GLOW PREMIUM THEME UPGRADE — Boss Edition by Zara ❤️ */
+/* ============================================================= */
+
+/* Smooth global transitions */
+* {
+  transition: 0.25s ease !important;
+}
+
+/* ---------------------- SUBJECT CARDS ------------------------ */
+
+.subject-item {
+  position: relative;
+  box-shadow: 0 0 10px rgba(124, 160, 255, 0.25), 
+              inset 0 0 8px rgba(255, 255, 255, 0.08);
+}
+
+.subject-item:hover {
+  box-shadow: 
+    0 0 18px rgba(135, 206, 250, 0.55),
+    0 0 22px rgba(111, 66, 193, 0.45),
+    inset 0 0 10px rgba(255, 255, 255, 0.15);
+  transform: translateX(8px) translateY(-3px) scale(1.02);
+}
+
+/* ---------------------- TOPIC CARDS -------------------------- */
+
+.topic-card {
+  border: 1px solid rgba(129, 140, 248, 0.9);
+  box-shadow: 
+    0 0 14px rgba(80, 120, 255, 0.45),
+    inset 0 0 12px rgba(255, 255, 255, 0.10);
+}
+
+.topic-card:hover {
+  box-shadow:
+    0 0 20px rgba(111, 200, 255, 0.75),
+    0 0 25px rgba(88, 28, 135, 0.55),
+    inset 0 0 14px rgba(255, 255, 255, 0.15);
+  transform: scale(1.015);
+}
+
+/* Topic Header Glow Line */
+.topic-header {
+  border-bottom: 1px solid rgba(129, 140, 248, 0.4);
+}
+
+.topic-card.open .topic-header {
+  background: rgba(59, 130, 246, 0.20);
+  box-shadow: inset 0 0 14px rgba(111, 200, 255, 0.3);
+}
+
+/* ---------------------- SUBTOPICS ---------------------------- */
+
+.subtopic-item {
+  box-shadow: 0 0 12px rgba(90, 170, 255, 0.25);
+}
+
+.subtopic-item:hover {
+  box-shadow: 0 0 16px rgba(111, 200, 255, 0.65);
+  transform: scale(1.03);
+}
+
+/* ---------------------- BUTTONS ------------------------------ */
+
+.btn-primary,
+.sidebar-add-btn,
+.btn-green,
+.btn-glass {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover,
+.sidebar-add-btn:hover,
+.btn-green:hover,
+.btn-glass:hover {
+  box-shadow: 
+    0 0 20px rgba(124, 160, 255, 0.65),
+    0 0 30px rgba(255, 100, 140, 0.45);
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* Neon border animation */
+.btn-primary::after,
+.sidebar-add-btn::after,
+.btn-green::after,
+.btn-glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: 0 0 12px rgba(180, 120, 255, 0.35);
+  animation: neonPulse 2.4s infinite ease-in-out;
+}
+
+@keyframes neonPulse {
+  0% { box-shadow: 0 0 8px rgba(180,120,255,0.35); }
+  50% { box-shadow: 0 0 22px rgba(120,200,255,0.75); }
+  100% { box-shadow: 0 0 8px rgba(180,120,255,0.35); }
+}
+
+/* ---------------------- MAIN PANEL --------------------------- */
+
+.main {
+  box-shadow:
+    0 0 25px rgba(88, 28, 135, 0.55),
+    inset 0 0 18px rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(129, 140, 248, 0.55);
+}
+
+.main:hover {
+  box-shadow:
+    0 0 35px rgba(135, 206, 250, 0.45),
+    inset 0 0 22px rgba(255, 255, 255, 0.18);
+}
+
+/* ---------------------- NAVBAR ------------------------------ */
+
+.navbar {
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 0 18px rgba(135, 206, 250, 0.35);
+}
+
+.nav-title {
+  text-shadow: 0 0 6px rgba(124, 160, 255, 0.8);
+}
+
+/* ---------------------- PDF CARDS --------------------------- */
+
+.pdf-card {
+  box-shadow: 0 0 14px rgba(111,200,255,0.35);
+}
+
+.pdf-card:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 
+    0 0 22px rgba(135, 206, 250, 0.75),
+    0 0 32px rgba(111, 66, 193, 0.6);
+}
+/* ============================================================= */
+/* ⭐ FINAL FULL WORKING CSS — WITH nav-right + FLEX NAV-CONTENT  */
+/* ============================================================= */
+
+/* ============ GLOBAL ============ */
+* {
+  box-sizing: border-box;
+  transition: 0.25s ease;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at top, #3d5dff 0%, #1d0c3f 35%, #050816 100%);
+  color: #f5f7ff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #4b5dff;
+  border-radius: 4px;
+}
+
+/* ============ NAVBAR ============ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(7, 12, 34, 0.9);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 14px 28px;
+}
+
+/* ⭐ Updated nav-content (FLEX + centered + right-aligned logout) */
+.nav-content {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* ⭐ FIX */
+}
+
+/* ⭐ Right section inside navbar */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto; /* ⭐ Works with flex */
+}
+
+.nav-logo {
+  font-size: 26px;
+  color: #7bdcff;
+}
+.nav-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* ============ LAYOUT ============ */
+.container {
+  max-width: 1280px;
+  margin: 18px auto 40px;
+  display: flex;
+  gap: 18px;
+}
+
+/* ============ SIDEBAR ============ */
+.sidebar {
+  width: 260px;
+  padding: 18px;
+  background: rgba(9, 16, 51, 0.92);
+  border-radius: 18px;
+  border: 1px solid rgba(124, 160, 255, 0.4);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+.sidebar-title {
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.subject-ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* ============ SUBJECT ITEM ============ */
+.subject-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  border-left: 4px solid var(--subject-accent);
+  background: var(--subject-bg);
+  color: #101624;
+  box-shadow: 0 0 10px rgba(124, 160, 255, 0.25),
+              inset 0 0 8px rgba(255, 255, 255, 0.08);
+}
+
+.subject-item:hover {
+  transform: translateX(8px) translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 0 18px rgba(135, 206, 250, 0.55),
+    0 0 22px rgba(111, 66, 193, 0.45),
+    inset 0 0 10px rgba(255, 255, 255, 0.15);
+}
+
+/* PASTEL THEMES */
+.pastel-1 { --subject-bg: rgba(255,231,240,0.95); --subject-bg-hover: rgba(255,219,236,1); --subject-accent:#ff8cbc;}
+.pastel-2 { --subject-bg: rgba(231,244,255,0.95); --subject-bg-hover: rgba(212,235,255,1); --subject-accent:#6bbaff;}
+.pastel-3 { --subject-bg: rgba(232,255,241,0.95); --subject-bg-hover: rgba(211,255,231,1); --subject-accent:#5edca5;}
+.pastel-4 { --subject-bg: rgba(255,245,228,0.95); --subject-bg-hover: rgba(255,236,212,1); --subject-accent:#ffba63;}
+.pastel-5 { --subject-bg: rgba(255,251,225,0.95); --subject-bg-hover: rgba(255,246,199,1); --subject-accent:#ffe066;}
+.pastel-6 { --subject-bg: rgba(243,237,255,0.95); --subject-bg-hover: rgba(232,223,255,1); --subject-accent:#b28cff;}
+
+/* ============ ADD SUBJECT BUTTON ============ */
+.sidebar-add-btn {
+  padding: 10px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6c63ff, #ff6584);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.55);
+}
+.sidebar-add-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ============ MAIN CONTENT ============ */
+.main {
+  flex: 1;
+  padding: 24px;
+  border-radius: 20px;
+  background: radial-gradient(circle at top left, rgba(111,66,193,0.35), rgba(14,19,61,0.96));
+  border: 1px solid rgba(129, 140, 248, 0.5);
+  box-shadow: 0 22px 55px rgba(0,0,0,0.8),
+              inset 0 0 18px rgba(255, 255, 255, 0.12);
+}
+.main:hover {
+  box-shadow:
+    0 0 35px rgba(135, 206, 250, 0.45),
+    inset 0 0 22px rgba(255,255,255,0.18);
+}
+
+/* ============ TOPIC CARDS ============ */
+.topic-card {
+  background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(15,23,42,0.95));
+  border-radius: 16px;
+  border: 1px solid rgba(129,140,248,0.9);
+  box-shadow: 
+    0 0 14px rgba(80,120,255,0.45),
+    inset 0 0 12px rgba(255,255,255,0.10);
+}
+
+.topic-card:hover {
+  transform: scale(1.015);
+  box-shadow:
+    0 0 20px rgba(111,200,255,0.75),
+    0 0 25px rgba(88,28,135,0.55),
+    inset 0 0 14px rgba(255,255,255,0.15);
+}
+
+/* Remove toggle white box */
+.topic-toggle-btn {
+  background: none !important;
+  border: none !important;
+}
+
+/* ============ SUBTOPIC ============ */
+.subtopic-item {
+  background: linear-gradient(135deg, rgba(37,99,235,0.4), rgba(8,47,73,0.95));
+  border: 1px solid rgba(129,140,248,0.8);
+  border-radius: 10px;
+  padding: 6px 10px;
+  box-shadow: 0 0 12px rgba(90,170,255,0.25);
+}
+.subtopic-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 16px rgba(111,200,255,0.65);
+}
+
+/* ============ BUTTONS ============ */
+
+.btn-primary,
+.sidebar-add-btn,
+.btn-green,
+.btn-glass {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover,
+.sidebar-add-btn:hover,
+.btn-green:hover,
+.btn-glass:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 20px rgba(124,160,255,0.65);
+}
+
+/* Neon pulse */
+.btn-primary::after,
+.sidebar-add-btn::after,
+.btn-green::after,
+.btn-glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: neonPulse 2.4s infinite ease-in-out;
+}
+
+@keyframes neonPulse {
+  0% { box-shadow: 0 0 8px rgba(180,120,255,0.35); }
+  50% { box-shadow: 0 0 22px rgba(120,200,255,0.75); }
+  100% { box-shadow: 0 0 8px rgba(180,120,255,0.35); }
+}
+
+/* ============ PDF CARDS ============ */
+.pdf-card {
+  background: radial-gradient(circle at top left, rgba(59,130,246,0.35), rgba(15,23,42,0.95));
+  border: 1px solid rgba(129,140,248,0.8);
+  padding: 12px 16px;
+  border-radius: 14px;
+  box-shadow: 0 0 14px rgba(111,200,255,0.35);
+}
+.pdf-card:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 
+    0 0 22px rgba(135,206,250,0.75),
+    0 0 32px rgba(111,66,193,0.6);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .subject-item {
+    min-width: 150px;
+    flex-shrink: 0;
+  }
+}
+/* Must be in your style.css */
+.nav-content {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; 
+    align-items: center; 
+    /* ... other styles ... */
+}
+.nav-left-placeholder {
+    grid-column: 1; 
+}
+.nav-title {
+    grid-column: 2;
+    margin: 0;
+}
+.nav-right {
+    grid-column: 3;
+    justify-self: end; 
+    /* ... other styles ... */
+}
